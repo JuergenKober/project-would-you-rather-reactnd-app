@@ -19,7 +19,7 @@ class Home extends Component {
         <ul className='dashboard-list'>
         {this.props.unansweredQuestionIds.map((id) => (
           <li key={id}>
-            <div>QUESTION ID: {id}</div>
+            <Question id={id} />
           </li>
         ))}
         </ul>
