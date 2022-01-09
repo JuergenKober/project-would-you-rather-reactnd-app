@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { formatDate } from '../utils/helper';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
 
 class Question extends Component {
 
@@ -9,21 +11,26 @@ class Question extends Component {
     const { question, author } = this.props;
 
     return (
-      <div>
-        <div>
-          {author.name} asks, would you rather be
-          <br />
-          QUESTION ID: {question.id}
-          <br />
-          {question.optionOne.text}...?
-          <br />
-          or
-          <br />
-          {question.optionTwo.text}...?
-          <br />
-          {formatDate(question.timestamp)}
-        </div>
-      </div>
+      <Row>
+        <Card style={{ width: '18rem' }}>
+          <Card.Header>
+            {author.name} asks, would you rather
+          </Card.Header>
+          <Card.Body>
+            <Card.Text>
+              {question.optionOne.text}...?
+              <br />
+              or
+              <br />
+              {question.optionTwo.text}...?
+            </Card.Text>
+            <Card.Link href="#">Link to detail</Card.Link>
+          </Card.Body>
+          <Card.Footer>
+					  {formatDate(question.timestamp)}
+					</Card.Footer>
+        </Card>
+      </Row>
     )
   }
 };
