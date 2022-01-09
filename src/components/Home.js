@@ -1,29 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
+import QuestionList from './QuestionList';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 class Home extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <h1 className='center'>Would you rather... ?</h1>
-        <h3 className='center'>Answered Questions</h3>
-        <ul className='dashboard-list'>
-        {this.props.answeredQuestionIds.map((id) => (
-          <li key={id}>
-            <Question id={id} />
-          </li>
-        ))}
-        </ul>
-        <h3 className='center'>Unanswered Questions</h3>
-        <ul className='dashboard-list'>
-        {this.props.unansweredQuestionIds.map((id) => (
-          <li key={id}>
-            <Question id={id} />
-          </li>
-        ))}
-        </ul>
-      </div>
+        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3">
+          <Tab eventKey="unanswered" title="Unanswered Questions">
+            <QuestionList questionIds={this.props.answeredQuestionIds} />
+          </Tab>
+          <Tab eventKey="answered" title="Answered Questions">
+            <QuestionList questionIds={this.props.unansweredQuestionIds} />
+          </Tab>
+        </Tabs>
+      </Fragment>
     )
   }
 };
