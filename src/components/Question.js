@@ -12,7 +12,7 @@ class Question extends Component {
 
     return (
       <Row>
-        <Card style={{ width: '18rem' }}>
+        <Card>
           <Card.Header>
             {author.name} asks, would you rather
           </Card.Header>
