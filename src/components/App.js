@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Home from './Home';
+import Login from './Login';
 import { handleInitialData } from '../actions/shared';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
 class App extends Component {
   componentDidMount() {
@@ -11,14 +10,20 @@ class App extends Component {
 	}
 
   render() {
+    const { authedUser } = this.props;
+
+    if (authedUser === undefined) {
+      console.log('no authedUser');
+    } else {
+      console.log(authedUser);
+    }
+
     return (
-      <Container>
-        <Row className="justify-content-md-center">
-        {this.props.loading === true
-          ? null
-          : <Home />}
-        </Row>
-      </Container>
+      <div>
+      {authedUser === undefined
+        ? <Login />
+        : <Home />}
+      </div>
     )
   }
 };
