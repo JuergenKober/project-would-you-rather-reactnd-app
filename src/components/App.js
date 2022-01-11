@@ -20,7 +20,7 @@ class App extends Component {
 
     return (
       <div>
-      {authedUser === undefined
+      {!authedUser
         ? <Login />
         : <Home />}
       </div>
@@ -30,7 +30,7 @@ class App extends Component {
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    authedUser
   }
 }
 
