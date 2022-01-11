@@ -5,6 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 class Login extends Component {
+  state = {
+		errorMsg: ''
+	};
 
   componentDidMount() {
     const { dispatch } = this.props;
