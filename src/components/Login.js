@@ -21,24 +21,33 @@ class Login extends Component {
 
     event.preventDefault();
 
-    dispatch(setAuthedUser(userID));
+    if (userID !== '') {
+			dispatch(setAuthedUser(userID));
+		} else {
+			this.setState({ errorMsg: 'Please select a user from the dropdown menu' });
+		}
   }
 
   render() {
     const { userNames } = this.props;
+    const { errorMsg } = this.state;
 
     return (
       <div>
       <Form onSubmit={this.handleSubmit}>
         <Form.Label>Username</Form.Label>
-          <Form.Control as="select" ref={(id) => (this.userID = id)}>
-            <option value="">Select user</option>
-            {userNames.map((item) => (
-              <option value={item.value} key={item.value}>
-                {item.label}
-              </option>
-            ))}
-          </Form.Control>
+        {errorMsg ? (
+				  <p className="text-danger">{errorMsg}</p>
+				) : null}
+
+        <Form.Control as="select" ref={(id) => (this.userID = id)}>
+          <option value="">Please select a user</option>
+          {userNames.map((item) => (
+            <option value={item.value} key={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </Form.Control>
 
           <Button type="submit" variant="outline-dark">
             Login
