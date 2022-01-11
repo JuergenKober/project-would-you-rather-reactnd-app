@@ -9,12 +9,6 @@ class Login extends Component {
 		errorMsg: ''
 	};
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    //const AUTHED_ID = 'tylermcginnis';
-		//dispatch(setAuthedUser(AUTHED_ID));
-	};
-
   handleSubmit = (event) => {
     const userID = this.userID.value;
 		const { dispatch } = this.props;
