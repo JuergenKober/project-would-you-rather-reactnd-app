@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
 import QuestionList from './QuestionList';
+import Header from './Header';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
@@ -9,6 +10,7 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
+        <Header />
         <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3">
           <Tab eventKey="unanswered" title="Unanswered Questions">
             <QuestionList questionIds={this.props.answeredQuestionIds} />
