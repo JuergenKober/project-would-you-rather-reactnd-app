@@ -2,12 +2,14 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { unsetAuthedUser } from '../actions/authedUser';
 
 function Header(props) {
   const { user, dispatch } = props;
 
   const logoutUser = () => {
 		console.log('logging out');
+    dispatch(unsetAuthedUser());
 	};
 
   return (
@@ -24,7 +26,6 @@ function Header(props) {
     </Fragment>
   );
 }
-
 
 function mapStateToProps({ users, authedUser }) {
 	return {
