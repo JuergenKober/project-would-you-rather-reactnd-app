@@ -3,28 +3,58 @@ import { connect } from 'react-redux';
 import { formatDate } from '../utils/helper';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 class QuestionForm extends Component {
+  state = {
+    errorMsg: ''
+  };
 
+  handleSubmit = (id, event) => {
+    const { dispatch } = this.props;
+
+    event.preventDefault();
+
+  }
 
   render() {
     const { question, author } = this.props;
+    const { errorMsg } = this.state;
 
     return (
       <Row>
         <Card>
           <Card.Header>
-            FORM {author.name} asks, would you rather
+            {author.name} asks, would you rather
           </Card.Header>
           <Card.Body>
-            <Card.Text>
-              {question.optionOne.text}...?
-              <br />
-              or
-              <br />
-              {question.optionTwo.text}...?
-            </Card.Text>
-            <Card.Link href="#">Link to detail</Card.Link>
+            <Form
+								onSubmit={(event) => this.handleSubmit(question.id, event)}
+							>
+              {errorMsg ? (<p>{errorMsg}</p>) : null}
+              <Form.Check
+									custom
+									type="radio"
+									id="optionOne"
+									label={question.optionTwo.text}
+									value="optionOne"
+									name="answer"
+									className="mb-2"
+								/>
+								<Form.Check
+									custom
+									type="radio"
+									id="optionTwo"
+									label={question.optionTwo.text}
+									value="optionTwo"
+									name="answer"
+									className="mb-2"
+								/>
+							<Button type="submit">
+								Your answer
+							</Button>
+            </Form>
           </Card.Body>
           <Card.Footer>
 					  {formatDate(question.timestamp)}
