@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { formatDate } from '../utils/helper';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 class Question extends Component {
 
@@ -24,7 +26,9 @@ class Question extends Component {
               <br />
               {question.optionTwo.text}...?
             </Card.Text>
-            <Card.Link href="#">Link to detail</Card.Link>
+            <Link to={`/questions/${question.id}`}>
+						  <Button>View Question</Button>
+						</Link>
           </Card.Body>
           <Card.Footer>
 					  {formatDate(question.timestamp)}

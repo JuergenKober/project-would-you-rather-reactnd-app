@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import Question from './Question';
 import QuestionList from './QuestionList';
 import Header from './Header';
 import Tab from 'react-bootstrap/Tab';

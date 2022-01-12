@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
-import Question from './Question';
+import QuestionTeaser from './QuestionTeaser';
 
 class QuestionPage extends Component {
   render() {
@@ -10,7 +10,7 @@ class QuestionPage extends Component {
     return (
       <Fragment>
         <Header />
-        <Question id={id} />
+        <QuestionTeaser id={id} />
       </Fragment>
     )
   }
