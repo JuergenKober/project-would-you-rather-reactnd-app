@@ -12,9 +12,12 @@ class QuestionForm extends Component {
   };
 
   handleSubmit = (id, event) => {
+    const answer = this.form.answer.value;
     const { dispatch } = this.props;
 
     event.preventDefault();
+
+    console.log('form submitted, answer', answer);
 
   }
 
@@ -30,11 +33,14 @@ class QuestionForm extends Component {
           </Card.Header>
           <Card.Body>
             <Form
-								onSubmit={(event) => this.handleSubmit(question.id, event)}
+								onSubmit={
+                  (event) => this.handleSubmit(question.id, event)
+                }
+                ref={(f) => (this.form = f)}
 							>
               {errorMsg ? (<p>{errorMsg}</p>) : null}
               <Form.Check
-									custom
+									custom="true"
 									type="radio"
 									id="optionOne"
 									label={question.optionTwo.text}
@@ -43,7 +49,7 @@ class QuestionForm extends Component {
 									className="mb-2"
 								/>
 								<Form.Check
-									custom
+									custom="true"
 									type="radio"
 									id="optionTwo"
 									label={question.optionTwo.text}
