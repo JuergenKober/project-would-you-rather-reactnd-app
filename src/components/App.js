@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Home from './Home';
+import WouldYouRatherApp from './WouldYouRatherApp';
 import Login from './Login';
-import QuestionPage from './QuestionPage';
 import { handleInitialData } from '../actions/shared';
 
 class App extends Component {
@@ -23,7 +22,8 @@ class App extends Component {
       <div>
       {!authedUser
         ? <Login />
-        : <QuestionPage />}
+        : <WouldYouRatherApp />
+      }
       </div>
     )
   }
