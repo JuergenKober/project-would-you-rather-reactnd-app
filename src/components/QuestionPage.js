@@ -5,14 +5,18 @@ import QuestionForm from './QuestionForm';
 import QuestionStats from './QuestionStats';
 import { useParams } from 'react-router-dom';
 
-const QuestionPage = ({authedUser, users}) => {
+const QuestionPage = ({answersByUser}) => {
   const { id } = useParams();
   console.log('id from params: ', id)
+  const isAnswered = answersByUser.hasOwnProperty(id) ? true : false;
 
   return (
     <Fragment>
       <Header />
-      <QuestionStats id={id} />
+      {isAnswered
+        ? <QuestionStats id={id} />
+        : <QuestionForm id={id} />
+      }
     </Fragment>
   )
 }
@@ -21,12 +25,11 @@ const QuestionPage = ({authedUser, users}) => {
 function mapStateToProps ({ authedUser, users }) {
 
   const answersByUser = users[authedUser].answers;
-  //const id = '8xf0y6ziyjabvozdd253nd';
+
   console.log(answersByUser);
 
   return {
-    authedUser,
-    users
+    answersByUser
   };
 }
 
