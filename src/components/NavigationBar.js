@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { unsetAuthedUser } from '../actions/authedUser';
+import { NavLink, Link } from 'react-router-dom';
 
 function NavigationBar(props) {
   const { user, dispatch } = props;
@@ -18,9 +19,19 @@ function NavigationBar(props) {
 		<Fragment>
       <Navbar>
         <Container>
-          <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
+          <Navbar.Brand as={Link} to="/">
+            Would you rather...?
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link as={NavLink} to="/" exact="true">
+                Home
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/leaderboard">
+                Leaderboard
+              </Nav.Link>
+            </Nav>
             <Navbar.Text>
               Signed in as: <a href="#login">{user.name}</a>
             </Navbar.Text>

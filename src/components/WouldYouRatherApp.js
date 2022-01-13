@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import QuestionPage from './QuestionPage';
+import LeaderBoard from './LeaderBoard';
 import Container from 'react-bootstrap/Container';
 import NavigationBar from './NavigationBar';
 
@@ -25,6 +26,13 @@ class WouldYouRatherApp extends React.Component {
                 path="/questions/:id"
                 element={
                   <QuestionPage />
+                }
+              />
+              <Route
+                exact
+                path="/leaderboard"
+                element={
+                  <LeaderBoard />
                 }
               />
             </Routes>
