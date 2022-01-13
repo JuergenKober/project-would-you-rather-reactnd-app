@@ -5,6 +5,7 @@ import QuestionPage from './QuestionPage';
 import LeaderBoard from './LeaderBoard';
 import Container from 'react-bootstrap/Container';
 import NavigationBar from './NavigationBar';
+import QuestionNew from './QuestionNew';
 
 class WouldYouRatherApp extends React.Component {
   render() {
@@ -26,6 +27,13 @@ class WouldYouRatherApp extends React.Component {
                 path="/questions/:id"
                 element={
                   <QuestionPage />
+                }
+              />
+              <Route
+                exact
+                path="/add"
+                element={
+                  <QuestionNew />
                 }
               />
               <Route

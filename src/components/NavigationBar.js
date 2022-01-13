@@ -17,7 +17,7 @@ function NavigationBar(props) {
 
   return (
 		<Fragment>
-      <Navbar>
+      <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/">
             Would you rather...?
@@ -28,6 +28,9 @@ function NavigationBar(props) {
               <Nav.Link as={NavLink} to="/" exact="true">
                 Home
               </Nav.Link>
+              <Nav.Link as={NavLink} to="/add">
+                Add Question
+              </Nav.Link>
               <Nav.Link as={NavLink} to="/leaderboard">
                 Leaderboard
               </Nav.Link>
@@ -35,7 +38,7 @@ function NavigationBar(props) {
             <Navbar.Text>
               Signed in as: <a href="#login">{user.name}</a>
             </Navbar.Text>
-            <Button onClick={logoutUser}>
+            <Button variant="outline-dark" onClick={logoutUser}>
               Logout
             </Button>
           </Navbar.Collapse>
