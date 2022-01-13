@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import Header from './Header';
 import QuestionForm from './QuestionForm';
 import QuestionStats from './QuestionStats';
 import { useParams } from 'react-router-dom';
@@ -12,7 +11,6 @@ const QuestionPage = ({answersByUser}) => {
 
   return (
     <Fragment>
-      <Header />
       {isAnswered
         ? <QuestionStats id={id} />
         : <QuestionForm id={id} />
