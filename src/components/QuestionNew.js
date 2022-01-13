@@ -5,6 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import Alert from 'react-bootstrap/Alert';
+import { handleAddQuestion } from '../actions/questions';
 
 class QuestionNew extends Component {
   state = {
@@ -21,17 +23,21 @@ class QuestionNew extends Component {
 		});
 	};
 
-  handleSubmit = (id, event) => {
+  handleSubmit = (event) => {
     const { dispatch } = this.props;
+    const { optionOne, optionTwo } = this.state;
 
     event.preventDefault();
 
-    console.log('form submitted');
-
+    if (optionOne !== '' && optionTwo !== '') {
+      dispatch(handleAddQuestion(optionOne, optionTwo));
+    } else {
+      this.setState({ errorMsg: 'Please enter the two options for your question' });
+    }
   }
 
   render() {
-    const { errorMsg } = this.state;
+    const { optionOne, optionTwo, errorMsg } = this.state;
 
     return (
       <Fragment>
@@ -41,6 +47,7 @@ class QuestionNew extends Component {
 						<Card bg="light">
 							<Card.Body>
                 <Form onSubmit={this.handleSubmit}>
+                {errorMsg ? (<Alert variant="danger">{errorMsg}</Alert>) : null}
                   <Form.Group controlId="optionOne">
                     <Form.Label>Option No. 1</Form.Label>
                     <Form.Control
