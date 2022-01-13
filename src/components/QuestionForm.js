@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { handleAddAnswer } from '../actions/questions';
 
 class QuestionForm extends Component {
   state = {
@@ -17,8 +18,11 @@ class QuestionForm extends Component {
 
     event.preventDefault();
 
-    console.log('form submitted, answer', answer);
-
+    if (answer !== '') {
+			dispatch(handleAddAnswer(id, answer));
+		} else {
+			this.setState({ errorMsg: 'Please choose an answer' });
+		}
   }
 
   render() {
