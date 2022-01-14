@@ -17,11 +17,23 @@ function NavigationBar(props) {
 
   return (
 		<Fragment>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/">
+            <img
+              alt=""
+              src="/logo.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
             Would you rather...?
           </Navbar.Brand>
+        </Container>
+      </Navbar>
+      <br />
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Container>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -36,14 +48,17 @@ function NavigationBar(props) {
               </Nav.Link>
             </Nav>
             <Navbar.Text>
-              Signed in as: <a href="#login">{user.name}</a>
+              Signed in as <a href="#login">{user.name}</a>
             </Navbar.Text>
-            <Button variant="outline-dark" onClick={logoutUser}>
-              Logout
-            </Button>
+            <Navbar.Text>
+              <Button variant="light" onClick={logoutUser}>
+                Logout
+              </Button>
+            </Navbar.Text>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <br />
     </Fragment>
   );
 };
