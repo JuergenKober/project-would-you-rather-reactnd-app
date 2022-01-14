@@ -6,6 +6,7 @@ import LeaderBoard from './LeaderBoard';
 import Container from 'react-bootstrap/Container';
 import NavigationBar from './NavigationBar';
 import QuestionNew from './QuestionNew';
+import PageNotFound from './PageNotFound';
 
 class WouldYouRatherApp extends React.Component {
   render() {
@@ -41,6 +42,11 @@ class WouldYouRatherApp extends React.Component {
                 path="/leaderboard"
                 element={
                   <LeaderBoard />
+                }
+              />
+              <Route
+                element={
+                  <PageNotFound />
                 }
               />
             </Routes>
