@@ -59,7 +59,7 @@ function NavigationBar(props) {
           			width="40"
           			height="40"
           			className="mx-3"
-          			alt="user avatar"
+          			alt={user.name}
           		/>
               <Button
                 variant="light"
