@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
-        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3">
+        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example">
           <Tab eventKey="unanswered" title="Unanswered Questions">
             <QuestionList questionIds={this.props.unansweredQuestionIds} />
           </Tab>
