@@ -10,10 +10,10 @@ class Home extends Component {
       <Fragment>
         <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example" className="mb-3">
           <Tab eventKey="unanswered" title="Unanswered Questions">
-            <QuestionList questionIds={this.props.answeredQuestionIds} />
+            <QuestionList questionIds={this.props.unansweredQuestionIds} />
           </Tab>
           <Tab eventKey="answered" title="Answered Questions">
-            <QuestionList questionIds={this.props.unansweredQuestionIds} />
+            <QuestionList questionIds={this.props.answeredQuestionIds} />
           </Tab>
         </Tabs>
       </Fragment>
