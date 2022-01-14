@@ -5,7 +5,10 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image';
 import { handleAddAnswer } from '../actions/questions';
+import PageNotFound from './PageNotFound';
 
 class QuestionForm extends Component {
   state = {
@@ -29,47 +32,62 @@ class QuestionForm extends Component {
     const { question, author } = this.props;
     const { errorMsg } = this.state;
 
+    if (question === null) {
+			return <PageNotFound />;
+		}
+
     return (
-      <Row>
-        <Card>
-          <Card.Header>
-            {author.name} asks, would you rather
-          </Card.Header>
-          <Card.Body>
-            <Form
-								onSubmit={
-                  (event) => this.handleSubmit(question.id, event)
-                }
-                ref={(f) => (this.form = f)}
-							>
-              {errorMsg ? (<p>{errorMsg}</p>) : null}
-              <Form.Check
-									custom="true"
-									type="radio"
-									id="optionOne"
-									label={question.optionTwo.text}
-									value="optionOne"
-									name="answer"
-									className="mb-2"
-								/>
-								<Form.Check
-									custom="true"
-									type="radio"
-									id="optionTwo"
-									label={question.optionTwo.text}
-									value="optionTwo"
-									name="answer"
-									className="mb-2"
-								/>
-							<Button type="submit">
-								Your answer
-							</Button>
-            </Form>
-          </Card.Body>
-          <Card.Footer>
-					  {formatDate(question.timestamp)}
-					</Card.Footer>
-        </Card>
+      <Row className="justify-content-center">
+        <Col md={10} xs={12}>
+          <Card className="m-3">
+            <Card.Header>
+              <Image
+                src={author.avatarURL}
+                roundedCircle
+                fluid
+                width="35"
+                height="35"
+                className="mx-3"
+                alt={author.name}
+              />
+              <b>{author.name}</b> wants to know, would you rather...
+            </Card.Header>
+            <Card.Body className="mx-3">
+              <Form
+  								onSubmit={
+                    (event) => this.handleSubmit(question.id, event)
+                  }
+                  ref={(f) => (this.form = f)}
+  							>
+                {errorMsg ? (<p>{errorMsg}</p>) : null}
+                <Form.Check
+  									custom="true"
+  									type="radio"
+  									id="optionOne"
+  									label={question.optionTwo.text}
+  									value="optionOne"
+  									name="answer"
+  									className="mb-2"
+  								/>
+  								<Form.Check
+  									custom="true"
+  									type="radio"
+  									id="optionTwo"
+  									label={question.optionTwo.text}
+  									value="optionTwo"
+  									name="answer"
+  									className="mb-2"
+  								/>
+  							<Button type="submit">
+  								Your answer
+  							</Button>
+              </Form>
+            </Card.Body>
+            <Card.Footer>
+  					  {formatDate(question.timestamp)}
+  					</Card.Footer>
+          </Card>
+        </Col>
       </Row>
     )
   }
