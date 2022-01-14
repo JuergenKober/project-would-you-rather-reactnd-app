@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { unsetAuthedUser } from '../actions/authedUser';
 import { NavLink, Link } from 'react-router-dom';
+import Image from 'react-bootstrap/Image';
 
 function NavigationBar(props) {
   const { user, dispatch } = props;
@@ -47,14 +48,27 @@ function NavigationBar(props) {
                 Leaderboard
               </Nav.Link>
             </Nav>
-            <Navbar.Text>
-              Signed in as <a href="#login">{user.name}</a>
-            </Navbar.Text>
-            <Navbar.Text>
-              <Button variant="light" onClick={logoutUser}>
-                Logout
+            <Nav>
+              <Navbar.Text>
+                Signed in as <a href="#login">{user.name}</a>
+              </Navbar.Text>
+              <Image
+          			src={user.avatarURL}
+          			roundedCircle
+          			fluid
+          			width="40"
+          			height="40"
+          			className="mx-3"
+          			alt="user avatar"
+          		/>
+              <Button
+                variant="light"
+                onClick={logoutUser}
+                className="mt-3 mt-lg-0"
+              >
+                  Logout
               </Button>
-            </Navbar.Text>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
