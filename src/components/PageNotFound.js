@@ -16,7 +16,7 @@ class PageNotFound extends Component {
               We're really sorry but we couldn't find this page
             </Card.Text>
             <Link to="/">
-              Back to Home Page
+              Go back to Home page
             </Link>
           </Card.Body>
 
