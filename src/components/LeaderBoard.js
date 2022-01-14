@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Card from 'react-bootstrap/Card';
+import LeaderBoardCard from './LeaderBoardCard';
 
 class LeaderBoard extends Component {
   render() {
@@ -12,11 +13,7 @@ class LeaderBoard extends Component {
 					<small>LeaderBoard</small>
 				</h2>
         {usersSorted.map((id) => (
-          <Card key={id}>
-            <Card.Text>
-              {id} --
-            </Card.Text>
-          </Card>
+          <LeaderBoardCard key={id} userId={id} />
         ))}
 			</Fragment>
 		);
