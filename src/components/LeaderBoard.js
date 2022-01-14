@@ -1,13 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import Card from 'react-bootstrap/Card';
 
 class LeaderBoard extends Component {
   render() {
-    return (
-      <div>
-        LeaderBoard
-      </div>
-    )
-  }
+    const { users, usersSorted } = this.props;
+
+		return (
+			<Fragment>
+				<h2 className="text-center">
+					<small>LeaderBoard</small>
+				</h2>
+        {usersSorted.map((id) => (
+          <Card key={id}>
+            <Card.Text>
+              {id} --
+            </Card.Text>
+          </Card>
+        ))}
+			</Fragment>
+		);
+	};
 };
 
-export default LeaderBoard;
+function mapStateToProps({ users }) {
+  const usersSorted = Object.keys(users).sort((a, b) => {
+		const aScore =
+			Object.keys(users[a].answers).length + users[a].questions.length;
+		const bScore =
+			Object.keys(users[b].answers).length + users[b].questions.length;
+
+		return bScore - aScore;
+	});
+
+  console.log('usersSorted: ', usersSorted);
+
+	return {
+		userNames: Object.keys(users).map((id) => ({
+			value: id,
+			label: users[id].name
+		})),
+    usersSorted,
+    users
+	};
+}
+
+export default connect(mapStateToProps)(LeaderBoard);
