@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class Login extends Component {
   state = {
@@ -27,27 +30,35 @@ class Login extends Component {
     const { errorMsg } = this.state;
 
     return (
-      <div>
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Label>Username</Form.Label>
-        {errorMsg ? (
-				  <p className="text-danger">{errorMsg}</p>
-				) : null}
+      <Row className="justify-content-center">
+        <Col md={10} xs={12}>
+          <Card className="m-3">
+            <Card.Body className="mx-3">
 
-        <Form.Control as="select" ref={(id) => (this.userID = id)}>
-          <option value="">Please select a user</option>
-          {userNames.map((item) => (
-            <option value={item.value} key={item.value}>
-              {item.label}
-            </option>
-          ))}
-        </Form.Control>
+              <Form onSubmit={this.handleSubmit}>
+                <Form.Label>Username</Form.Label>
+                {errorMsg ? (
+        				  <p className="text-danger">{errorMsg}</p>
+        				) : null}
 
-          <Button type="submit" variant="outline-dark">
-            Login
-          </Button>
-        </Form>
-      </div>
+                <Form.Control as="select" ref={(id) => (this.userID = id)}>
+                  <option value="">Please select a user</option>
+                  {userNames.map((item) => (
+                    <option value={item.value} key={item.value}>
+                      {item.label}
+                    </option>
+                  ))}
+                </Form.Control>
+                <br />
+                <Button type="submit" variant="outline-dark">
+                  Login
+                </Button>
+              </Form>
+
+        </Card.Body>
+      </Card>
+    </Col>
+  </Row>
     )
   }
 };
