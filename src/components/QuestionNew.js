@@ -41,10 +41,13 @@ class QuestionNew extends Component {
 
     return (
       <Fragment>
+      <Row className="justify-content-center">
+        <Col md={10} xs={12}>
+          <Card bg="light" className="m-3">
+            <Card.Header>
+
         <h2>Would You Rather...</h2>
-        <Row className="justify-content-center">
-					<Col>
-						<Card bg="light">
+        </Card.Header>
 							<Card.Body>
                 <Form onSubmit={this.handleSubmit}>
                 {errorMsg ? (<Alert variant="danger">{errorMsg}</Alert>) : null}
@@ -57,6 +60,7 @@ class QuestionNew extends Component {
                       onChange={this.handleInputChange}
                     />
                   </Form.Group>
+                  <br />
                   <h3>
                     <small>OR</small>
                   </h3>
@@ -69,6 +73,7 @@ class QuestionNew extends Component {
                       onChange={this.handleInputChange}
                     />
                   </Form.Group>
+                  <br />
                   <Button
                     type="submit"
                     variant="outline-dark"
