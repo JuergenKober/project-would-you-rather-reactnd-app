@@ -9,6 +9,10 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import { handleAddAnswer } from '../actions/questions';
 import PageNotFound from './PageNotFound';
+import Alert from 'react-bootstrap/Alert';
+
+import { setAuthedUser } from '../actions/authedUser';
+
 
 class QuestionForm extends Component {
   state = {
@@ -59,12 +63,12 @@ class QuestionForm extends Component {
                   }
                   ref={(f) => (this.form = f)}
   							>
-                {errorMsg ? (<p>{errorMsg}</p>) : null}
+                {errorMsg ? (<Alert variant="danger">{errorMsg}</Alert>) : null}
                 <Form.Check
   									custom="true"
   									type="radio"
   									id="optionOne"
-  									label={question.optionTwo.text}
+  									label={question.optionOne.text}
   									value="optionOne"
   									name="answer"
   									className="mb-2"

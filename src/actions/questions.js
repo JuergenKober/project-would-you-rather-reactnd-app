@@ -13,6 +13,7 @@ export function receiveQuestions(questions) {
 }
 
 function addAnswer({ qid, answer, authedUser }) {
+	console.log('NOW DISPATCH', qid, answer, authedUser);
 	return {
 		type: ADD_ANSWER,
 		answer: {
@@ -48,22 +49,17 @@ export function handleAddQuestion (optionOne, optionTwo) {
 }
 
 export function handleAddAnswer(qid, answer) {
-	return (dispatch, getState) => {
-		const { authedUser } = getState();
 
-		return saveQuestionAnswer({
+	return (dispatch, getState) => {
+    const { authedUser } = getState();
+
+    return saveQuestionAnswer({
 			qid,
 			answer,
 			authedUser
-		})
-			.then(() =>
-				dispatch(
-					addAnswer({
-						qid,
-						answer,
-						authedUser
-					})
-				)
-			)
-	};
+    })
+		.then(() => dispatch(
+			addAnswer({qid, answer, authedUser}))
+		)
+  }
 }
