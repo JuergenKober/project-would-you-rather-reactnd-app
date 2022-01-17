@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 
 const QuestionPage = ({answersByUser}) => {
   const { id } = useParams();
-  console.log('id from params: ', id)
   const isAnswered = answersByUser.hasOwnProperty(id) ? true : false;
 
   return (
@@ -23,8 +22,6 @@ const QuestionPage = ({answersByUser}) => {
 function mapStateToProps ({ authedUser, users }) {
 
   const answersByUser = users[authedUser].answers;
-
-  console.log(answersByUser);
 
   return {
     answersByUser

@@ -13,7 +13,6 @@ export function receiveQuestions(questions) {
 }
 
 function addAnswer({ qid, answer, authedUser }) {
-	console.log('NOW DISPATCH', qid, answer, authedUser);
 	return {
 		type: ADD_ANSWER,
 		answer: {

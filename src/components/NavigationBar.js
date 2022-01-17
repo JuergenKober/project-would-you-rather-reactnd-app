@@ -12,7 +12,6 @@ function NavigationBar(props) {
   const { user, dispatch } = props;
 
   const logoutUser = () => {
-		console.log('logging out');
     dispatch(unsetAuthedUser());
 	};
 

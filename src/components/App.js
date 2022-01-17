@@ -12,12 +12,6 @@ class App extends Component {
   render() {
     const { authedUser } = this.props;
 
-    if (authedUser === undefined) {
-      console.log('no authedUser');
-    } else {
-      console.log(authedUser);
-    }
-
     return (
       <div>
       {!authedUser

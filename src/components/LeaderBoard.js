@@ -30,8 +30,6 @@ function mapStateToProps({ users }) {
 		return bScore - aScore;
 	});
 
-  console.log('usersSorted: ', usersSorted);
-
 	return {
 		userNames: Object.keys(users).map((id) => ({
 			value: id,
