@@ -1,3 +1,15 @@
+# Would You Rather...? Udacity React Nanodegree Program
+
+## Introduction
+
+The Would You Rather...? project is a final assessment project for Udacity's React Fundamentals course. It is a web app that is build with React, Redux, React Router and Redux Thunk and lets a user play the “Would You Rather?” game.
+
+## How to Use
+
+* Clone this repo with `https://github.com/JuergenKober/project-would-you-rather-reactnd-app`
+* Go to the application folder and install all project dependencies with `npm install`
+* Start start the application with `npm start`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
