@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 import Form from 'react-bootstrap/Form';
@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 
 class Login extends Component {
   state = {
@@ -30,6 +32,22 @@ class Login extends Component {
     const { errorMsg } = this.state;
 
     return (
+      <Fragment>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+        <Navbar.Brand>
+            <img
+              alt=""
+              src="/logo.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+            Would you rather...?
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+      <br />
       <Row className="justify-content-center">
         <Col md={10} xs={12}>
           <Card className="m-3">
@@ -59,6 +77,7 @@ class Login extends Component {
       </Card>
     </Col>
   </Row>
+  </Fragment>
     )
   }
 };
