@@ -7,12 +7,14 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import { handleAddQuestion } from '../actions/questions';
+import { Navigate } from 'react-router-dom';
 
 class QuestionNew extends Component {
   state = {
 		optionOne: '',
 		optionTwo: '',
-    errorMsg: ''
+    errorMsg: '',
+    toHome: false
 	};
 
   handleInputChange = (event) => {
@@ -34,11 +36,22 @@ class QuestionNew extends Component {
     } else {
       this.setState({ errorMsg: 'Please enter the two options for your question' });
     }
+
+    this.setState(() => ({
+      optionOne: '',
+  		optionTwo: '',
+      errorMsg: '',
+      toHome: true
+    }))
   }
 
   render() {
-    const { optionOne, optionTwo, errorMsg } = this.state;
+    const { optionOne, optionTwo, errorMsg, toHome } = this.state;
 
+    if (toHome === true) {
+      return <Navigate to='/' />
+    }
+    
     return (
       <Fragment>
       <Row className="justify-content-center">
