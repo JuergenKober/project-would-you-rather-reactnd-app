@@ -49,7 +49,7 @@ function NavigationBar(props) {
             </Nav>
             <Nav>
               <Navbar.Text>
-                Signed in as <a href="#login">{user.name}</a>
+                Signed in as <Link to="/leaderboard">{user.name}</Link>
               </Navbar.Text>
               <Image
           			src={user.avatarURL}
